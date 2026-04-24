@@ -28,48 +28,48 @@ namespace DeliveryHub.Domain.Entities
         public const decimal MaxCargoWeightKg = 100_000m;
 
         /// <summary>
-        /// Получает или задает уникальный идентификатор заказа в базе данных.
+        /// Уникальный идентификатор заказа в БД.
         /// </summary>
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// Получает или задает автоматически сгенерированный удобочитаемый номер заказа.
+        /// Автоматически сгенерированный удобочитаемый номер заказа.
         /// Например: ORD-20260424-000001.
         /// </summary>
         public string OrderNumber { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает город отправителя.
+        /// Город отправителя.
         /// </summary>
         public string SenderCity { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает адрес отправителя.
+        /// Адрес отправителя.
         /// </summary>
         public string SenderAddress { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает город-получатель..
+        /// Город получателя.
         /// </summary>
         public string RecipientCity { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает адрес получателя.
+        /// Адрес получателя.
         /// </summary>
         public string RecipientAddress { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает вес груза в килограммах.
+        /// Вес груза в килограммах.
         /// </summary>
         public decimal CargoWeightKg { get; private set; }
 
         /// <summary>
-        /// Получает или задает дату отгрузки груза.
+        ///Дату отгрузки груза.
         /// </summary>
         public DateOnly PickupDate { get; private set; }
 
         /// <summary>
-        /// Получает или задает дату и время в формате UTC, когда был создан заказ.
+        /// Дата и время в формате UTC, когда был создан заказ.
         /// </summary>
         public DateTime CreatedAtUtc { get; private set; }
 

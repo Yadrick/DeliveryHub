@@ -1,37 +1,37 @@
 ﻿namespace DeliveryHub.Application.Orders.Dto
 {
     /// <summary>
-    /// Представляет собой входные данные, необходимые для создания нового заказа на доставку.
+    /// Данные, необходимые для создания нового заказа на доставку.
     /// </summary>
     public sealed class CreateOrderDto
     {
         /// <summary>
-        /// Получает или задает город отправителя.
+        /// Город отправителя.
         /// </summary>
         public string SenderCity { get; set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает адрес отправителя.
+        /// Адрес отправителя.
         /// </summary>
         public string SenderAddress { get; set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает город-получатель.
+        /// Город получателя.
         /// </summary>
         public string RecipientCity { get; set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает адрес получателя.
+        /// Адрес получателя.
         /// </summary>
         public string RecipientAddress { get; set; } = string.Empty;
 
         /// <summary>
-        /// Получает или задает вес груза в килограммах.
+        /// Вес груза в килограммах.
         /// </summary>
         public decimal CargoWeightKg { get; set; }
 
         /// <summary>
-        /// Получает или устанавливает дату отгрузки груза.
+        /// Дата отгрузки груза.
         /// </summary>
         public DateOnly PickupDate { get; set; }
     }

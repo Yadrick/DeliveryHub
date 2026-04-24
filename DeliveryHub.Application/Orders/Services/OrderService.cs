@@ -96,7 +96,7 @@ namespace DeliveryHub.Application.Orders.Services
 
 
         /// <summary>
-        /// Генерирует уникальный, удобочитаемый номер заказа.
+        /// Генерирует уникальный номер заказа.
         /// </summary>
         /// <exception cref="InvalidOperationException">
         /// Выбрасывается исключение, если после нескольких попыток не удается сгенерировать уникальный номер заказа.
