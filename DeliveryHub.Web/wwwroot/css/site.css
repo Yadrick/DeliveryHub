@@ -29,3 +29,34 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.orders-table tbody tr.order-row {
+    cursor: pointer;
+}
+
+    .orders-table tbody tr.order-row:focus {
+        outline: 2px solid var(--bs-primary);
+        outline-offset: -2px;
+    }
+
+.empty-state-icon {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.card {
+    border-radius: 0.75rem;
+}
+
+.table > :not(caption) > * > * {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.validation-summary-valid {
+    display: none;
+}

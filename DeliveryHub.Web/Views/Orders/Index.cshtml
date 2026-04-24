@@ -1,0 +1,117 @@
+﻿@model IReadOnlyList<DeliveryHub.Web.Models.Orders.OrderListItemViewModel>
+
+@{
+    ViewData["Title"] = "Заказы";
+}
+
+<div class="orders-page">
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+            <h1 class="mb-1">Заказы на доставку</h1>
+            <p class="text-muted mb-0">
+                Здесь отображаются все созданные заказы.
+            </p>
+        </div>
+
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary">
+            Создать заказ
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] is string successMessage)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Готово!</strong> @successMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="card border-0 shadow-sm">
+            <div class="card-body text-center py-5">
+                <div class="empty-state-icon mb-3">
+                    📦
+                </div>
+
+                <h5 class="card-title mb-2">
+                    Заказов пока нет
+                </h5>
+
+                <p class="card-text text-muted mb-4">
+                    Создайте первый заказ на доставку, чтобы он появился в списке.
+                </p>
+
+                <a asp-controller="Orders" asp-action="Create" class="btn btn-primary">
+                    Создать первый заказ
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <strong>Список заказов</strong>
+                <span class="badge text-bg-secondary">
+                    Всего: @Model.Count
+                </span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle mb-0 orders-table">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Номер заказа</th>
+                            <th scope="col">Отправитель</th>
+                            <th scope="col">Получатель</th>
+                            <th scope="col" class="text-end">Вес</th>
+                            <th scope="col">Дата забора</th>
+                            <th scope="col">Создан</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr class="order-row"
+                                role="button"
+                                tabindex="0"
+                                title="Открыть заказ @order.OrderNumber"
+                                onclick="window.location.href='@Url.Action("Details", "Orders", new { id = order.Id })'"
+                                onkeydown="if (event.key === 'Enter' || event.key === ' ') window.location.href='@Url.Action("Details", "Orders", new { id = order.Id })'">
+                                <td>
+                                    <span class="fw-semibold">@order.OrderNumber</span>
+                                </td>
+
+                                <td>
+                                    <div class="fw-medium">@order.SenderCity</div>
+                                    <small class="text-muted">@order.SenderAddress</small>
+                                </td>
+
+                                <td>
+                                    <div class="fw-medium">@order.RecipientCity</div>
+                                    <small class="text-muted">@order.RecipientAddress</small>
+                                </td>
+
+                                <td class="text-end">
+                                    @order.CargoWeightKg.ToString("0.###") кг
+                                </td>
+
+                                <td>
+                                    @order.PickupDate.ToString("dd.MM.yyyy")
+                                </td>
+
+                                <td>
+                                    <span title="@order.CreatedAtUtc.ToString("O")">
+                                        @order.CreatedAtUtc.ToString("dd.MM.yyyy HH:mm") UTC
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

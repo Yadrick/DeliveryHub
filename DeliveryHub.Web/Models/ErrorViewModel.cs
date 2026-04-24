@@ -1,9 +1,18 @@
-namespace DeliveryHub.Web.Models
+﻿namespace DeliveryHub.Web.Models
 {
-    public class ErrorViewModel
+    /// <summary>
+    /// Модель представления страницы ошибки.
+    /// </summary>
+    public sealed class ErrorViewModel
     {
+        /// <summary>
+        /// Идентификатор текущего HTTP-запроса.
+        /// </summary>
         public string? RequestId { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        /// <summary>
+        /// Значение, показывающее, нужно ли отображать идентификатор запроса.
+        /// </summary>
+        public bool ShowRequestId => !string.IsNullOrWhiteSpace(RequestId);
     }
 }

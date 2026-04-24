@@ -64,7 +64,7 @@ namespace DeliveryHub.Domain.Entities
         public decimal CargoWeightKg { get; private set; }
 
         /// <summary>
-        ///Дату отгрузки груза.
+        /// Дата забора груза.
         /// </summary>
         public DateOnly PickupDate { get; private set; }
 
@@ -122,7 +122,7 @@ namespace DeliveryHub.Domain.Entities
         /// <param name="recipientCity">Город получателя</param>
         /// <param name="recipientAddress">Адрес получателя</param>
         /// <param name="cargoWeightKg">Вес груза в килограммах</param>
-        /// <param name="pickupDate">Дата получения</param>
+        /// <param name="pickupDate">Дата забора</param>
         /// <param name="createdAtUtc">Дата и время создания заказа в формате UTC</param>
         /// <returns>Новый экземпляр <see cref="DeliveryOrder"/>.</returns>
         public static DeliveryOrder Create(

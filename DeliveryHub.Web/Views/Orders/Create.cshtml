@@ -1,0 +1,123 @@
+﻿@model DeliveryHub.Web.Models.Orders.CreateOrderViewModel
+
+@{
+    ViewData["Title"] = "Создание заказа";
+}
+
+<div class="create-order-page">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10">
+            <div class="mb-4">
+                <h1 class="mb-1">Создание заказа</h1>
+                <p class="text-muted mb-0">
+                    Заполните все обязательные поля для оформления заказа на доставку.
+                </p>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <form asp-controller="Orders" asp-action="Create" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">Данные отправителя</h5>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="SenderCity" class="form-label"></label>
+                                    <input asp-for="SenderCity"
+                                           class="form-control"
+                                           placeholder="Например, Люксембург"
+                                           autocomplete="address-level2" />
+                                    <span asp-validation-for="SenderCity" class="text-danger small"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="SenderAddress" class="form-label"></label>
+                                    <input asp-for="SenderAddress"
+                                           class="form-control"
+                                           placeholder="Например, Улица Вокзальная 1"
+                                           autocomplete="street-address" />
+                                    <span asp-validation-for="SenderAddress" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">Данные получателя</h5>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="RecipientCity" class="form-label"></label>
+                                    <input asp-for="RecipientCity"
+                                           class="form-control"
+                                           placeholder="Например, Эш-сюр-Альзетт"
+                                           autocomplete="address-level2" />
+                                    <span asp-validation-for="RecipientCity" class="text-danger small"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="RecipientAddress" class="form-label"></label>
+                                    <input asp-for="RecipientAddress"
+                                           class="form-control"
+                                           placeholder="Например, Авеню де ла Либерте, 10"
+                                           autocomplete="street-address" />
+                                    <span asp-validation-for="RecipientAddress" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">Информация о грузе</h5>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="CargoWeightKg" class="form-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="CargoWeightKg"
+                                               class="form-control"
+                                               type="number"
+                                               min="0.001"
+                                               max="100000"
+                                               step="0.001"
+                                               placeholder="12.5" />
+                                        <span class="input-group-text">кг</span>
+                                    </div>
+                                    <span asp-validation-for="CargoWeightKg" class="text-danger small"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="PickupDate" class="form-label"></label>
+                                    <input asp-for="PickupDate"
+                                           class="form-control"
+                                           type="date" />
+                                    <span asp-validation-for="PickupDate" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row gap-2 pt-2">
+                            <button type="submit" class="btn btn-primary">
+                                Создать заказ
+                            </button>
+
+                            <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-secondary">
+                                Отмена
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

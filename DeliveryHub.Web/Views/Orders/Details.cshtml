@@ -1,0 +1,88 @@
+﻿@model DeliveryHub.Web.Models.Orders.OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = $"Заказ {Model.OrderNumber}";
+}
+
+<div class="order-details-page">
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+            <h1 class="mb-1">Заказ @Model.OrderNumber</h1>
+            <p class="text-muted mb-0">
+                Просмотр созданного заказа в режиме чтения.
+            </p>
+        </div>
+
+        <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-secondary">
+            К списку заказов
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white">
+            <strong>Информация о заказе</strong>
+        </div>
+
+        <div class="card-body">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Отправитель</h5>
+
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Город</dt>
+                        <dd class="col-sm-7">@Model.SenderCity</dd>
+
+                        <dt class="col-sm-5 text-muted">Адрес</dt>
+                        <dd class="col-sm-7">@Model.SenderAddress</dd>
+                    </dl>
+                </div>
+
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Получатель</h5>
+
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Город</dt>
+                        <dd class="col-sm-7">@Model.RecipientCity</dd>
+
+                        <dt class="col-sm-5 text-muted">Адрес</dt>
+                        <dd class="col-sm-7">@Model.RecipientAddress</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Груз</h5>
+
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Вес</dt>
+                        <dd class="col-sm-7">@Model.CargoWeightKg.ToString("0.###") кг</dd>
+
+                        <dt class="col-sm-5 text-muted">Дата забора</dt>
+                        <dd class="col-sm-7">@Model.PickupDate.ToString("dd.MM.yyyy")</dd>
+                    </dl>
+                </div>
+
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Системная информация</h5>
+
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Номер заказа</dt>
+                        <dd class="col-sm-7">
+                            <span class="fw-semibold">@Model.OrderNumber</span>
+                        </dd>
+
+                        <dt class="col-sm-5 text-muted">Дата создания</dt>
+                        <dd class="col-sm-7">
+                            <span title="@Model.CreatedAtUtc.ToString("O")">
+                                @Model.CreatedAtUtc.ToString("dd.MM.yyyy HH:mm") UTC
+                            </span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

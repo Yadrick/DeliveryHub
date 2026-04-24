@@ -31,7 +31,7 @@
         public decimal CargoWeightKg { get; set; }
 
         /// <summary>
-        /// Дата отгрузки груза.
+        /// Дата забора груза.
         /// </summary>
         public DateOnly PickupDate { get; set; }
     }

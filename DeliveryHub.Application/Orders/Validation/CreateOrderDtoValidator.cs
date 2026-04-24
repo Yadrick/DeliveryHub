@@ -45,7 +45,7 @@ namespace DeliveryHub.Application.Orders.Validation
 
             RuleFor(x => x.PickupDate)
                 .Must(date => date != default)
-                .WithMessage("Требуется указать дату получения.");
+                .WithMessage("Требуется указать дату забора.");
         }
     }
 }
